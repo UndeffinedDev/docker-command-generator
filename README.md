@@ -11,7 +11,7 @@ A web application that helps users generate complex `docker run` commands throug
 
 ## Demo
 
-![Screenshot](./example_fullpage.png)
+<img width="1280" height="1073" alt="example_fullpage" src="https://github.com/user-attachments/assets/766a3583-9829-443f-9079-108272b6b733" />
 
 ## Getting Started
 
