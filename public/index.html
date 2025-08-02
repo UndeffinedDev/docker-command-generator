@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Docker Command Creator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Docker Command Creator</h1>
+
+  <form id="dockerForm">
+    <label>Image:
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <docker-search></docker-search>
+        <input type="hidden" id="image">
+        <tooltip-element position="right" text="⭐ = <strong>Official image</strong><br>🤖 = <strong>Automated build</strong>">
+          <img src="https://icons.veryicon.com/png/o/miscellaneous/flat-icon/help-252.png" alt="info" width="18" height="18">
+        </tooltip-element>
+      </div>
+    </label>      
+
+    <label>Container Name:
+      <input type="text" id="containerName" placeholder="e.g. my-nginx">
+    </label>
+
+    <fieldset>
+      <legend>Port Mapping</legend>
+      <input type="text" id="hostPort" placeholder="Host port (e.g. 8080)">
+      <input type="text" id="containerPort" placeholder="Container port (e.g. 80)">
+    </fieldset>
+
+    <fieldset>
+      <legend>Volume Mapping</legend>
+      <input type="text" id="hostVolume" placeholder="Host path (e.g. /data)">
+      <input type="text" id="containerVolume" placeholder="Container path (e.g. /app/data)">
+    </fieldset>
+
+    <fieldset>
+      <legend>Environment Variables</legend>
+      <input type="text" id="envKey" placeholder="Key (e.g. NODE_ENV)">
+      <input type="text" id="envValue" placeholder="Value (e.g. production)">
+      <button type="button" id="addEnvVar">+ Add</button>
+    </fieldset>
+
+    <ul id="envList"></ul>
+
+    <fieldset>
+      <legend>Resource Limits</legend>
+      <label>CPU Cores:
+        <input type="number" id="cpuCores" step="0.1" placeholder="e.g. 1.5">
+      </label>
+
+      <label>Memory (RAM):
+        <input type="text" id="memory" placeholder="e.g. 512m or 1g">
+      </label>
+
+      <label>Swap Memory:
+        <input type="text" id="memorySwap" placeholder="e.g. 1g">
+      </label>
+
+      <label>Storage Limit (overlay2):
+        <input type="text" id="storageLimit" placeholder="e.g. 1g">
+      </label>
+    </fieldset>
+
+    <button type="submit">Generate Command</button>
+  </form>
+
+  <h2>Generated Command:</h2>
+  <pre id="output"></pre>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="./components/tooltip-element.js"></script>
+  <script type="module" src="./components/docker-search.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.querySelector('docker-search').addEventListener('image-selected', (e) => {
+      const selectedImage = e.detail.image;
+      document.getElementById('image').value = selectedImage;
+    });
+  </script>
+</body>
+</html>
