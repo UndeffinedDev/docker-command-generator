@@ -56,6 +56,7 @@ Then open [http://localhost](http://localhost) in your browser.
 │   └── components/
 │       ├── docker-search.js      # Web component for live Docker image search
 │       └── tooltip-element.js    # Web component for tooltips (uses DOMPurify)
+|-- LICENSE
 └── README.md
 ```
 

@@ -73,11 +73,5 @@
   <script type="module" src="./components/tooltip-element.js"></script>
   <script type="module" src="./components/docker-search.js"></script>
   <script src="script.js"></script>
-  <script>
-    document.querySelector('docker-search').addEventListener('image-selected', (e) => {
-      const selectedImage = e.detail.image;
-      document.getElementById('image').value = selectedImage;
-    });
-  </script>
 </body>
 </html>

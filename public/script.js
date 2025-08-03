@@ -126,3 +126,9 @@ window.removeEnvVar = function (index) {
   envVars.splice(index, 1);
   renderEnvList();
 };
+
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelector('docker-search').addEventListener('image-selected', (e) => {
+    document.getElementById('image').value = e.detail.image;
+  });
+});
